@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Happy Birthday, Anu Priya!</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background: linear-gradient(135deg, #ffebf2 0%, #ffe6f0 50%, #ffd1e6 100%);
+      color:#2b2b2b;
+      display:flex;align-items:center;justify-content:center;padding:32px;overflow-x:hidden;
+    }
+
+    .card{
+      width:100%;max-width:920px;
+      background: rgba(255, 192, 203, 0.45);
+      backdrop-filter: blur(12px);
+      border-radius:25px;
+      box-shadow:0 15px 50px rgba(255, 105, 180,0.35);
+      padding:36px;position:relative;overflow:hidden;
+      animation:fadeIn 1s ease forwards;
+    }
+
+    @keyframes fadeIn { from{opacity:0;transform:translateY(30px) scale(0.95);} to{opacity:1;transform:translateY(0) scale(1);} }
+
+    header{display:flex;align-items:center;gap:20px;flex-wrap:wrap;justify-content:center}
+    .cake{
+      width:100px;height:100px;border-radius:20px;
+      background:linear-gradient(180deg, rgba(255,192,203,0.8), rgba(255,182,193,0.6));
+      display:flex;align-items:center;justify-content:center;flex-shrink:0;
+      box-shadow:0 8px 24px rgba(255,105,180,0.3);
+      animation:bounce 1.8s infinite alternate;
+    }
+    .cake svg{width:64px;height:64px;transform:rotate(-5deg);animation:wiggle 2s infinite alternate;}
+
+    @keyframes wiggle {0%{transform:rotate(-5deg);}100%{transform:rotate(5deg);}}
+
+    h1{
+      font-size:36px;margin-bottom:10px;text-align:center;color:#ff4e91;
+      text-shadow:0 0 12px #ff8ab6,0 0 24px #ffc0d5;
+      animation:glow 1.8s infinite alternate;
+    }
+    @keyframes glow { from{text-shadow:0 0 12px #ff8ab6,0 0 24px #ffc0d5;} to{text-shadow:0 0 24px #ff8ab6,0 0 48px #ffc0d5;} }
+
+    .sub{font-size:16px;color:#5b5b5b;text-align:center; margin-bottom:16px;}
+
+    .content{display:grid;grid-template-columns:1fr 320px;gap:28px;margin-top:28px;align-items:start}
+    .message{
+      background:rgba(255, 182, 193, 0.35);
+      backdrop-filter: blur(8px);
+      padding:28px;border-radius:18px;border:1px solid rgba(255,182,193,0.25);
+      line-height:1.6;font-size:17px;color:#2c2c2c;position:relative; z-index:2;
+      box-shadow:0 10px 20px rgba(255,105,180,0.2);
+    }
+    .message .lead{font-weight:700;margin-bottom:12px; font-size:20px; color:#ff4e91}
+
+    .extras{display:flex;flex-direction:column;gap:54px}
+    .pill{background:rgba(255, 192, 203, 0.4);border-radius:16px;padding:24px 26px;box-shadow:0 10px 26px rgba(255,105,180,0.2);font-size:17px;transition:transform 0.3s;}
+    .pill:hover{transform:scale(1.22);}
+
+    .actions{display:flex;gap:12px;margin-top:20px;flex-wrap:wrap;justify-content:center}
+    .btn{padding:12px 18px;border-radius:12px;border:0;cursor:pointer;font-weight:600;transition:transform 0.2s, box-shadow 0.2s;}
+    .btn:hover{transform:scale(1.1);box-shadow:0 6px 20px rgba(255,94,162,0.4);}
+    .btn-primary{background:linear-gradient(90deg,#ff5fa2,#ff8ab6);color:white}
+    .btn-ghost{background:transparent;border:1px solid rgba(60,60,60,0.06);}
+
+    footer{margin-top:20px;font-size:14px;color:#666;text-align:center}
+
+    .badge{position:absolute;right:22px;top:22px;background:rgba(255,182,193,0.6);padding:10px 14px;border-radius:999px;font-weight:700;color:#ff4e91;box-shadow:0 10px 20px rgba(255,105,180,0.25);}
+
+    .balloon{position:absolute;bottom:-140px;width:70px;height:110px;border-radius:50px 50px 12px 12px;opacity:0.95;display:flex;align-items:flex-end;justify-content:center;animation:float 7s ease-in-out infinite;}
+    .string{width:2px;height:60px;background:rgba(0,0,0,0.07);margin-bottom:-30px}
+
+    #confetti-canvas{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none; z-index:1;}
+
+    .memories-section{display:none;flex-wrap:wrap;gap:12px;margin-top:20px;justify-content:center}
+    .memories-section img{width:100px;height:100px;border-radius:16px;object-fit:cover;box-shadow:0 6px 18px rgba(255,105,180,0.3);transition:transform 0.3s;}
+    .memories-section img:hover{transform:scale(1.1);}
+
+    @keyframes bounce {0%{transform:translateY(0);}100%{transform:translateY(-16px);}}
+    @keyframes float {0%{transform:translateY(0)}50%{transform:translateY(-40px)}100%{transform:translateY(0)}}
+
+    @media (max-width:880px){.content{grid-template-columns:1fr}.cake{display:none}.badge{display:none}}
+  </style>
+</head>
+<body>
+  <div class="card" role="main" aria-label="Birthday card for Anu Priya">
+    <div class="badge">🎈 Surprise!</div>
+    <canvas id="confetti-canvas"></canvas>
+
+    <header>
+      <div class="cake" aria-hidden="true">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="8" y="22" width="48" height="26" rx="6" fill="#fff" stroke="#FFB6D5" stroke-width="2"/>
+          <path d="M16 22c0-6 7-6 8-6s8 0 8 6" stroke="#FF6EA6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M32 14v6" stroke="#FF8AA0" stroke-linecap="round" stroke-width="2"/>
+          <circle cx="24" cy="36" r="2" fill="#FFD6EA"/>
+          <circle cx="40" cy="36" r="2" fill="#FFD6EA"/>
+        </svg>
+      </div>
+      <div>
+        <h1>🎉 Happy Birthday, Anu Priya! 🎂</h1>
+        <div class="sub">Today’s your day — sparkle louder, laugh harder, and eat the biggest slice of cake!</div>
+      </div>
+    </header>
+
+    <div class="content">
+      <section class="message" aria-labelledby="main-message">
+        <div id="main-message" class="lead">Hey Anu Priya — happy birthday, birthday star! 🌟</div>
+        <p>Today is all about you: the smiles you give, the jokes that crack us up, and the little kindnesses that make everyone’s day better. I hope this year brings you endless laughter, new adventures, and all the little surprises that make life sweet. Dance like nobody’s watching, make a wish, and enjoy every single moment — you deserve every bit of happiness. 💖✨</p>
+        <p>From our silly late-night chats to the times we couldn’t stop laughing at the smallest things, you’ve turned ordinary days into unforgettable memories. You’re caring, fun, and one of the most genuine people I know — and the world is brighter with you in it.</p>
+        <p>May your year ahead be full of exciting opportunities, heartwarming moments, and dreams coming true. Keep being your wonderful self — curious, kind, and fearless. Here’s to more adventures, more inside jokes, and more shared smiles. Happy birthday again — let’s celebrate you today and always! 🎈💐</p>
+        <div style="margin-top:12px;font-weight:700">With lots of love and the biggest birthday hug,<br>— Harish 💙</div>
+
+        <div class="actions">
+          <button class="btn btn-primary" id="wishBtn">Make a wish ✨</button>
+          <button class="btn btn-ghost" id="saveBtn">Save as image</button>
+          <button class="btn btn-primary" id="memoriesBtn">View Memories 📸</button>
+        </div>
+
+        <div class="memories-section" id="memoriesSection">
+          <img src="image1.jpg" alt="Memory 1">
+          <img src="image2.jpg" alt="Memory 2">
+          <img src="image3.jpg" alt="Memory 3">
+          <img src="image4.jpg" alt="Memory 4">
+          <img src="image5.jpg" alt="Memory 5">
+          <img src="image6.jpg" alt="Memory 6">
+          <img src="image7.jpg" alt="Memory 7">
+        </div>
+      </section>
+
+      <aside class="extras" aria-labelledby="extras">
+        <div class="pill"><strong>Short & sweet</strong><br>Happy Birthday, Anu Priya! Wishing you a day full of cake, smiles, and everything you love. 🎂💖</div>
+        <div class="pill"><strong>Little playful notes</strong><br>• Blow out the candles 🕯️<br>• Party mode ON 🎉</div>
+        <div class="pill"><strong>Birthday wishes</strong><br>• May your day be as bright as your smile.<br>• May laughter follow you wherever you go.<br>• May every wish you make today come true.</div>
+        <div class="pill"><strong>Please</strong><br>Save me a slice of cake! 🎂</div>
+      </aside>
+    </div>
+
+    <footer>Tip: Click <em>Make a wish</em> to see a little surprise. You can also download this as a picture to keep!</footer>
+
+    <div class="balloon" style="left:18px;background:linear-gradient(180deg,#ffd4e7,#ff9ac1);animation:float 7s ease-in-out infinite;"><div class="string"></div></div>
+    <div class="balloon" style="right:18px;width:56px;height:86px;background:linear-gradient(180deg,#fff4d6,#ffd58a);animation:float 6.5s ease-in-out infinite;"><div class="string"></div></div>
+    <div class="balloon" style="left:120px;width:50px;height:76px;background:linear-gradient(180deg,#e6fff8,#bff3e6);animation:float 8.5s ease-in-out infinite;"><div class="string"></div></div>
+
+  </div>
+
+  <script>
+    const style=document.createElement('style');
+    style.innerHTML='@keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-40px)}100%{transform:translateY(0)}}';
+    document.head.appendChild(style);
+
+    (function(){
+      const canvas=document.getElementById('confetti-canvas');
+      const ctx=canvas.getContext('2d');
+      let W,H,particles=[];
+
+      function resize(){W=canvas.width=document.querySelector('.card').clientWidth;H=canvas.height=document.querySelector('.card').clientHeight;}
+      window.addEventListener('resize',resize);resize();
+
+      function rand(min,max){return Math.random()*(max-min)+min}
+      function Particle(){this.x=rand(0,W);this.y=rand(-H,0);this.w=rand(6,12);this.h=rand(8,16);this.r=rand(0,360);this.dx=rand(-0.8,0.8);this.dy=rand(1.2,3.5);this.color=`hsl(${~~rand(0,360)},70%,60%)`;this.tilt=rand(-0.3,0.3);}
+      Particle.prototype.update=function(){this.x+=this.dx;this.y+=this.dy;this.r+=this.tilt;if(this.y>H+20){this.y=rand(-H,0);this.x=rand(0,W)}}
+      Particle.prototype.draw=function(){ctx.save();ctx.translate(this.x,this.y);ctx.rotate(this.r*Math.PI/180);ctx.fillStyle=this.color;ctx.fillRect(-this.w/2,-this.h/2,this.w,this.h);ctx.restore();}
+
+      function init(n){particles=[];for(let i=0;i<n;i++)particles.push(new Particle());}
+      init(90);
+
+      function loop(){ctx.clearRect(0,0,W,H);for(let p of particles){p.update();p.draw()}requestAnimationFrame(loop);}
+      loop();
+
+      document.getElementById('wishBtn').addEventListener('click',function(){for(let i=0;i<50;i++)particles.push(new Particle());showPopup('Happiest birthday Anu! and enjoy your day ✨');});
+      document.getElementById('saveBtn').addEventListener('click',function(){alert('To save this page as an image: press Ctrl+P (or Cmd+P) and Save as PDF / Print to PDF.');});
+
+      document.getElementById('memoriesBtn').addEventListener('click',function(){
+        const section=document.getElementById('memoriesSection');
+        section.style.display=section.style.display==='flex'?'none':'flex';
+      });
+
+      function showPopup(text){const el=document.createElement('div');el.textContent=text;el.style.position='fixed';el.style.left='50%';el.style.top='20%';el.style.transform='translateX(-50%)';el.style.background='rgba(255,255,255,0.95)';el.style.padding='16px 20px';el.style.borderRadius='14px';el.style.boxShadow='0 12px 36px rgba(8,20,40,0.15)';el.style.fontWeight=700;el.style.zIndex=9999;document.body.appendChild(el);setTimeout(()=>el.style.opacity='0',1200);setTimeout(()=>el.remove(),1700);}
+    })();
+  </script>
+</body>
+</html>
